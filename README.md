@@ -44,7 +44,6 @@ See [PostgreSQLAdapter][postgres_adapter] for the default types.
 
 For the MySQL/MySQL2 adapters, maybe you could change boolean to a string type:
 
-    require 'native_db_types_override'
     NativeDbTypesOverride::Options.configure({
       ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter => {
         :boolean => { :name => "varchar", :limit => 1 }
@@ -57,7 +56,6 @@ See [AbstractMysqlAdapter][mysql_adapter] for the default types.
 
 Maybe you need to extend the default string limit from 255 to 4096:
 
-    require 'native_db_types_override'
     NativeDbTypesOverride::Options.configure({
       ActiveRecord::ConnectionAdapters::SQLite3Adapter => {
         :string => { :name => "varchar", :limit => 4096 }
@@ -76,7 +74,6 @@ In addition, it's native_database_types method can define boolean as VARCHAR2 (1
 
 However, if you need to make another change like making datetime and timestamp store timezones *and* you want to emulate_booleans_from_strings, you'll need to do that manually:
 
-    require 'native_db_types_override'
     NativeDbTypesOverride::Options.configure({
       ActiveRecord::ConnectionAdapters::OracleEnhancedAdapter => {
         :datetime => { :name => "TIMESTAMP WITH TIMEZONE" },
@@ -119,7 +116,7 @@ And try to play with data (this is postgres-specific):
     m.a_binary = 1
     m.a_boolean = true
     m.a_xml = '<testing>123</testing>'
-    #m.a_tsvector = nil # TODO: need an example of how to set with sample data
+    m.a_tsvector = nil
     m.save!
 
 ### License
