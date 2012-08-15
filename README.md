@@ -66,23 +66,23 @@ See [SQLite3Adapter][sqlite_adapter] for the default types.
 
 #### Oracle
 
-Oracle enhanced adapter isn't included in Rails, so you have to include its gem.
+Oracle enhanced adapter isn't included in Rails, so you have to include its gem in your Gemfile along with any other requirements it has.
 
 In addition, it's native_database_types method can define boolean as VARCHAR2 (1 char) or NUMBER (0 or 1), so if that is all you are trying to do, then *don't use this gem* and just try this or look in its adapter/README to see how this could be done:
 
     ActiveRecord::ConnectionAdapters::OracleEnhancedAdapter.emulate_booleans_from_strings = true
 
-However, if you need to make another change like making datetime and timestamp store timezones *and* you want to emulate_booleans_from_strings, you'll need to do that manually:
+However, if you need to make another change like making datetime and timestamp store timezones *and* you want to emulate_booleans_from_strings, just ensure that you define the boolean shown in the following example rather than using OracleEnhancedAdapter's emulate_booleans_from_strings option:
 
     NativeDbTypesOverride::Options.configure({
       ActiveRecord::ConnectionAdapters::OracleEnhancedAdapter => {
         :datetime => { :name => "TIMESTAMP WITH TIMEZONE" },
         :timestamp => { :name => "TIMESTAMP WITH TIMEZONE" },
-        :boolean     => { :name => "NUMBER", :limit => 1 }
+        :boolean => { :name => "VARCHAR2", :limit => 1 }
       }
     })
 
-The reason for this is that Native Database Types Override tries to use the constant NATIVE_DATABASE_TYPES available on most adapters to get the existing hash before doing the overrides.
+The reason for this is that Native Database Types Override gem tries to use the constant NATIVE_DATABASE_TYPES available on most adapters to get the existing hash before doing the overrides, but OracleEnhancedAdapter's emulate_booleans_from_strings option changes what is returned by the native_database_types method to NATIVE_DATABASE_TYPES but with :boolean changed to the value {:name => "VARCHAR2", :limit => 1}.
 
 See [OracleEnhancedAdapter][oracle_adapter] for the default types.
 
