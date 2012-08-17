@@ -13,15 +13,15 @@ All adapter classes in Rails 3.1-4.0 should have a NATIVE_DATABASE_TYPES constan
 
 In your ActiveRecord/Rails 3.1+ project, add this to your Gemfile:
 
+    gem 'activerecord-native_db_types_override'
+
+For the development version:
+
     gem 'activerecord-native_db_types_override', :git => 'git://github.com/garysweaver/activerecord-native_db_types_override.git'
 
 Then run:
 
     bundle install
-
-To stay up-to-date, periodically run:
-
-    bundle update activerecord-native_db_types_override
 
 ### Usage
 
