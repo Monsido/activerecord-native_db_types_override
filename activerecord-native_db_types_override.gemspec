@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ['garysweaver@gmail.com']
   s.homepage    = 'https://github.com/garysweaver/activerecord-native_db_types_override'
   s.summary     = %q{Overrides native database types in ActiveRecord DB adapters.}
-  s.description = %q{Overrides native database types for any database adapter with a native_database_types method. Compatible with ActiveRecord 3.x/4.x and Ruby 1.8.7/1.9.x.}
+  s.description = %q{Overrides native database types for any database adapter with a native_database_types method. Compatible with ActiveRecord 3.1+/4.0.}
   s.files = Dir['lib/**/*'] + ['Rakefile', 'README.md']
   s.license = 'MIT'
 end
