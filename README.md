@@ -115,6 +115,10 @@ And try to play with data (this is postgres-specific):
     m.a_tsvector = nil
     m.save!
 
+Turn on debug output by adding this prior to NativeDbTypesOverride.configure:
+
+    NativeDbTypesOverride.debug = true
+
 ### License
 
 Copyright (c) 2012 Gary S. Weaver, released under the [MIT license][lic].
