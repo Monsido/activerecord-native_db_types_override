@@ -15,10 +15,6 @@ In your ActiveRecord/Rails 3.1+ project, add this to your Gemfile:
 
     gem 'activerecord-native_db_types_override'
 
-For the development version:
-
-    gem 'activerecord-native_db_types_override', :git => 'git://github.com/garysweaver/activerecord-native_db_types_override.git'
-
 Then run:
 
     bundle install
@@ -31,7 +27,7 @@ In your config/environment.rb or environment specfic configuration, you may spec
 
 For example, if you want Rails to use the timestamptz type for all datetimes and timestamps created by migrations, you could use:
 
-    NativeDbTypesOverride::Options.configure({
+    NativeDbTypesOverride.configure({
       ActiveRecord::ConnectionAdapters::PostgreSQLAdapter => {
         :datetime => { :name => "timestamptz" },
         :timestamp => { :name => "timestamptz" }
@@ -44,7 +40,7 @@ See [PostgreSQLAdapter][postgres_adapter] for the default types.
 
 For the MySQL/MySQL2 adapters, maybe you could change boolean to a string type:
 
-    NativeDbTypesOverride::Options.configure({
+    NativeDbTypesOverride.configure({
       ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter => {
         :boolean => { :name => "varchar", :limit => 1 }
       }
@@ -56,7 +52,7 @@ See [AbstractMysqlAdapter][mysql_adapter] for the default types.
 
 Maybe you need to extend the default string limit from 255 to 4096:
 
-    NativeDbTypesOverride::Options.configure({
+    NativeDbTypesOverride.configure({
       ActiveRecord::ConnectionAdapters::SQLite3Adapter => {
         :string => { :name => "varchar", :limit => 4096 }
       }
@@ -74,7 +70,7 @@ In addition, it's native_database_types method can define boolean as VARCHAR2 (1
 
 However, if you need to make another change like making datetime and timestamp store timezones *and* you want to emulate_booleans_from_strings, just ensure that you define the boolean shown in the following example rather than using OracleEnhancedAdapter's emulate_booleans_from_strings option:
 
-    NativeDbTypesOverride::Options.configure({
+    NativeDbTypesOverride.configure({
       ActiveRecord::ConnectionAdapters::OracleEnhancedAdapter => {
         :datetime => { :name => "TIMESTAMP WITH TIMEZONE" },
         :timestamp => { :name => "TIMESTAMP WITH TIMEZONE" },
