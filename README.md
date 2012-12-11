@@ -21,7 +21,7 @@ Then run:
 
 ### Usage
 
-In your config/environment.rb or environment specfic configuration, you may specify one or more options in the config hash that will be merged into the default types. The act of configuring does the hash merge/activation of changes.
+After the call to `NameOfYourApp::Application.initialize!` in your config/environment.rb or an environment specific configuration, you may specify one or more options in the config hash that will be merged into the default types. The act of configuring does the hash merge/activation of changes.
 
 #### PostgreSQL
 
@@ -87,6 +87,8 @@ See [OracleEnhancedAdapter][oracle_adapter] for the default types.
 Look for the adapter class that contains the native_database_types method and specify the fully-qualified name (e.g. ActiveRecord::ConnectionAdapters::MyDbAdapter) as the key in the options hash. Let us know if we can list your adapter here.
 
 ### Troubleshooting
+
+Make sure that you add the configuration after the `NameOfMyApp::Application.initialize!` or you will get an `uninitialized constant (adapter class)` error.
 
 Test out a migration and include all the types defined in your adapter's NATIVE_DATABASE_TYPES if you're unsure whether it is defining things correctly, e.g. in a test project for PostgreSQL in Rails 3.1/3.2 you could do this and then look at the my_models table in your database:
 
