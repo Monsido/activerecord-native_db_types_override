@@ -98,7 +98,7 @@ Let us know if we can list a new or revised adapter here. Pull requests are welc
 
 ### Troubleshooting
 
-Make sure that you add the configuration after the `NameOfMyApp::Application.initialize!` or you will get an `uninitialized constant (adapter class)` error.
+Make sure that you either add a require for the adapter before the configuration or you may get an `uninitialized constant (adapter class)` error, depending on whether something else loaded the adapter prior to configuration.
 
 Test out a migration and include all the types defined in your adapter's NATIVE_DATABASE_TYPES if you're unsure whether it is defining things correctly, e.g. in a test project for PostgreSQL in Rails 3.1/3.2 you could do this and then look at the my_models table in your database:
 
