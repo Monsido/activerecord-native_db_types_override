@@ -3,7 +3,7 @@ ActiveRecord 3.1+/4.0 Native Database Types Override
 
 Define native database types that Rails migrations and ActiveRecord should use. Theoretically this should work for any ActiveRecord adapter written to support the access defined in the "How it works" section.
 
-Does not work in Rails/ActiveRecord 3.0 or earlier versions, and even though it should work in Rails/ActiveRecord 3.1+/4.0.
+Rails/ActiveRecord 3.0 or earlier versions are not supported.
 
 ### How it works
 
