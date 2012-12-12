@@ -23,19 +23,16 @@ Then run:
 
 In your config/environment.rb or an environment specific configuration, you may specify one or more options in the config hash that will be merged into the default types. The act of configuring does the hash merge/activation of changes.
 
-Some gems may require the adapter prior to this point, so it may not need to be required, but we do not load the Rails adapters in the NativeDbTypesOverride gem because all are most likely not needed.
-
-Note: I left the Ruby 1.8 hashrocket notation to show it shouldn't matter. Feel free to use 1.9+ hash syntax.
+If using Ruby 1.8.x, use hashrocket notation instead for the following examples.
 
 #### PostgreSQL
 
 For example, if you want Rails to use the timestamptz type for all datetimes and timestamps created by migrations, you could use:
 
-    require 'active_record/connection_adapters/postgresql_adapter'
     NativeDbTypesOverride.configure({
-      :postgres => {
-        :datetime => { :name => "timestamptz" },
-        :timestamp => { :name => "timestamptz" }
+      postgres: {
+        datetime: { name: "timestamptz" },
+        timestamp: { name: "timestamptz" }
       }
     })
 
@@ -46,8 +43,8 @@ See [PostgreSQLAdapter][postgres_adapter] for the default types.
 For the MySQL/MySQL2 adapters, maybe you could change boolean to a string type:
 
     NativeDbTypesOverride.configure({
-      :mysql => {
-        :boolean => { :name => "varchar", :limit => 1 }
+      mysql: {
+        boolean: { name: "varchar", limit: 1 }
       }
     })
 
@@ -58,8 +55,8 @@ See [AbstractMysqlAdapter][mysql_adapter] for the default types.
 Maybe you need to extend the default string limit from 255 to 4096:
 
     NativeDbTypesOverride.configure({
-      :sqlite => {
-        :string => { :name => "varchar", :limit => 4096 }
+      sqlite: {
+        string: { :name: "varchar", limit: 4096 }
       }
     })
 
@@ -76,10 +73,10 @@ In addition, it's native_database_types method can define boolean as VARCHAR2 (1
 However, if you need to make another change like making datetime and timestamp store timezones *and* you want to emulate_booleans_from_strings, just ensure that you define the boolean shown in the following example rather than using OracleEnhancedAdapter's emulate_booleans_from_strings option:
 
     NativeDbTypesOverride.configure({
-      :oracle => {
-        :datetime => { :name => "TIMESTAMP WITH TIMEZONE" },
-        :timestamp => { :name => "TIMESTAMP WITH TIMEZONE" },
-        :boolean => { :name => "VARCHAR2", :limit => 1 }
+      oracle: {
+        datetime: { name: "TIMESTAMP WITH TIMEZONE" },
+        timestamp: { name: "TIMESTAMP WITH TIMEZONE" },
+        boolean: { name: "VARCHAR2", limit: 1 }
       }
     })
 
@@ -96,8 +93,8 @@ Be sure to add a require for the adapter, if it has not been loaded already prio
     require 'active_record/connection_adapters/postgresql_adapter'
     NativeDbTypesOverride.configure({
       ActiveRecord::ConnectionAdapters::PostgreSQLAdapter => {
-        :datetime => { :name => "timestamptz" },
-        :timestamp => { :name => "timestamptz" }
+        datetime: { name: "timestamptz" },
+        timestamp: { name: "timestamptz" }
       }
     })
 
