@@ -135,6 +135,11 @@ Turn on debug output by adding this prior to NativeDbTypesOverride.configure:
 
     NativeDbTypesOverride.debug = true
 
+## Authors
+
+This app was written by [FineLine Prototyping, Inc.](http://www.finelineprototyping.com) by the following contributors:
+* Gary Weaver (https://github.com/garysweaver)
+
 ### License
 
 Copyright (c) 2013 FineLine Prototyping, Inc., released under the [MIT license][lic].
@@ -143,4 +148,4 @@ Copyright (c) 2013 FineLine Prototyping, Inc., released under the [MIT license][
 [mysql_adapter]: https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb
 [sqlite_adapter]: https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb
 [oracle_adapter]: https://github.com/rsim/oracle-enhanced/blob/master/lib/active_record/connection_adapters/oracle_enhanced_adapter.rb
-[lic]: http://github.com/garysweaver/activerecord-native_db_types_override/blob/master/LICENSE
+[lic]: http://github.com/FineLinePrototyping/activerecord-native_db_types_override/blob/master/LICENSE
