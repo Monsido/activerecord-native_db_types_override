@@ -1,5 +1,4 @@
-ActiveRecord 3.1+/4.0 Native Database Types Override
-=====
+## ActiveRecord 3.1+/4.0 Native Database Types Override
 
 Define native database types that Rails migrations and ActiveRecord should use. Theoretically this should work for any ActiveRecord adapter written to support the access defined in the "How it works" section.
 
@@ -135,7 +134,7 @@ Turn on debug output by adding this prior to NativeDbTypesOverride.configure:
 
     NativeDbTypesOverride.debug = true
 
-## Authors
+### Authors
 
 This app was written by [FineLine Prototyping, Inc.](http://www.finelineprototyping.com) by the following contributors:
 * Gary Weaver (https://github.com/garysweaver)
