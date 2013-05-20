@@ -137,7 +137,7 @@ Turn on debug output by adding this prior to NativeDbTypesOverride.configure:
 
 ### License
 
-Copyright (c) 2012 Gary S. Weaver, released under the [MIT license][lic].
+Copyright (c) 2013 FineLine Prototyping, Inc., released under the [MIT license][lic].
 
 [postgres_adapter]: https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/postgresql_adapter.rb
 [mysql_adapter]: https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb
