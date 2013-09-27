@@ -136,7 +136,7 @@ Turn on debug output by adding this prior to NativeDbTypesOverride.configure:
 
 ### Authors
 
-This app was written by [FineLine Prototyping, Inc.](http://www.finelineprototyping.com) by the following contributors:
+This was written by [FineLine Prototyping, Inc.](http://www.finelineprototyping.com) by the following contributors:
 * Gary Weaver (https://github.com/garysweaver)
 
 ### License
