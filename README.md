@@ -47,6 +47,24 @@ For the MySQL/MySQL2 adapters, maybe you could change boolean to a string type:
       }
     })
 
+Alternatively, you could use the this Gem to override [primary_key](https://github.com/rails/rails/blob/master/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L43)  to overcome errors that occur when trying to run `rake db:migrate` that are caused by MySQL updates (i.e. MySQL 5.7) that no longer support DEFAULT NULL values for PRIMARY KEY. Simply create the following:
+
+*config/initializers/abstract_mysql2_adapter.rb*
+
+	require 'active_record/connection_adapters/mysql2_adapter'
+	NativeDbTypesOverride.configure({
+	  ActiveRecord::ConnectionAdapters::Mysql2Adapter => {
+	    primary_key: "int(11) auto_increment PRIMARY KEY"
+	  }
+	})
+
+*config/environment.rb*
+
+	# Load monkey patches to prevent migration errors after importing legacy sql dumpfile
+	require File.expand_path('../initializers/abstract_mysql2_adapter.rb', __FILE__)
+
+*config/database.yml* check contains 'adapter: mysql2' for db connection to be used
+
 See [AbstractMysqlAdapter][mysql_adapter] for the default types.
 
 #### SQLite3
