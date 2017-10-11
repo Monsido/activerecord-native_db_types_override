@@ -1,2 +1,5 @@
 require 'activerecord-native_db_types_override/version'
+require 'activerecord-native_db_types_override/configuration_error'
+require 'activerecord-native_db_types_override/adapter_overrider'
+require 'activerecord-native_db_types_override/patches'
 require 'activerecord-native_db_types_override/options'
