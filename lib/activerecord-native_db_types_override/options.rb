@@ -7,7 +7,7 @@ module NativeDbTypesOverride
     end
 
     def configure(hash)
-      warn 'NativeDbTypesOverride.configure is deprecated! Call NativeDbTypesOverride.adapters instead of NativeDbTypesOverride.configure.'
+      warn 'NativeDbTypesOverride.configure is deprecated! Call NativeDbTypesOverride.configure_adapters instead of NativeDbTypesOverride.configure.'
       configure_adapters(hash)
     end
 
